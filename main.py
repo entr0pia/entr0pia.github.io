@@ -22,6 +22,8 @@ def get_title(fullname: str) -> str:
 
 def get_raws():
     global dict_fname_title
+    if not os.path.exists('raws'):
+        os.mkdir('raws')
     raws = os.listdir('raws')
     for i in raws:
         dict_fname_title[os.path.splitext(i)[0]] = get_title(i)
