@@ -1,0 +1,62 @@
+<ul>
+  <li><a href="#1">1. 安装方法</a></li>
+  <li><a href="#2">2. 为什么这样做</a>
+  <ul>
+    <li><a href="#21">2.1 纯命令行</a></li>
+    <li><a href="#22">2.2 版本管理</a></li>
+    <li><a href="#23">2.3 规避法律风险</a></li>
+  </ul></li>
+</ul>
+<p><title>Windows平台Java开发环境配置</title></p>
+
+<p>在2021年, 我们应该抛弃古老的传统, 而用现代化的方法来安装Java.</p>
+
+<p align="right" >--不是鲁迅说的</p>
+
+<h1 id="1">1. 安装方法</h1>
+
+<p>打开PowerShell, 输入以下命令:</p>
+
+<pre><code># 网络环境不好的话, 请使用代理
+# $env:https_proxy='&lt;host&gt;:&lt;port&gt;'
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+scoop bucket add java
+scoop update
+scoop install microsoft-lts-jdk # 微软推出的 java 开发套件
+# scoop install adopt8-hotspot # java 8
+</code></pre>
+
+<h1 id="2">2. 为什么这样做</h1>
+
+<h2 id="21">2.1 纯命令行</h2>
+
+<p>人们都或多或少接触过Linux.
+在Linux下面安装软件, 基本只需要在命令行使用包管理器即可完成软件的查询, 安装, 更新和卸载.</p>
+
+<p>Windows下同样也有包管理器, <strong>Chocolatey</strong>, <strong>Scoop</strong>, 以及微软自己的<strong>winget</strong>等等.
+这里使用的就是<strong>Scoop</strong>, 你可以到它的<a href="https://github.com/lukesampson/scoop">Github</a>页面了解更多.</p>
+
+<p>虽然Windows的包管理器不可能完全覆盖Windows软件生态, 但对于开发人员来说, 其常用的软件肯定是优先纳入的.
+除了Java, 你还可以用Scoop配置Golang, Python, GCC等环境.
+只需要一行命令, 不用再自己去配置环境变量.</p>
+
+<h2 id="22">2.2 版本管理</h2>
+
+<p>你可以用Scoop同时安装几个jdk版本, 同样只需要一行命令:</p>
+
+<pre><code>scoop reset &lt;jdk_package_name&gt;
+</code></pre>
+
+<p>就可以在不同版本之间切换.</p>
+
+<p>同样的, 更新小版本号也仅需一行命令:</p>
+
+<pre><code>scoop update &lt;jdk_package_name&gt;
+</code></pre>
+
+<h2 id="23">2.3 规避法律风险</h2>
+
+<p>传统的方法总是会引导人们去下载安装<strong>Oracle JDK</strong>, 实际上这是有一定的法律风险的.
+在生产环境下使用Oracle JDK是需要授权的.
+虽然Oracle公司不一定会找上门来, 但还是要做一个遵纪守法的好公民的.</p>
