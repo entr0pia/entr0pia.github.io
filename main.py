@@ -12,7 +12,9 @@ def convert(name: str):
     html = markdown2.markdown_path('raws/{}.md'.format(name),
                                    extras=['fenced-code-blocks', 'toc'])
     with open('arts/{}.html'.format(name), 'w') as f:
-        f.writelines([html.toc_html, html])
+        f.writelines(['<meta charset="UTF-8">\n',
+                      '<link rel="icon" type="image/x-icon" href="/imgs/favicon.ico">\n',
+                      html.toc_html, html])
 
 
 def get_title(fullname: str) -> str:
@@ -31,9 +33,7 @@ def get_raws():
 
 
 def update_index():
-    ids = ['<title>风沐白的部落格 | entr0pia\'s blog</title>',
-           '<meta charset="UTF-8">',
-           '<link rel="icon" type="image/x-icon" href="/imgs/favicon.ico">']
+    ids = []
     for k, v in dict_fname_title.items():
         i = '{}【{}】'.format(k[:10], v)
         uri = 'arts/{}.html'.format(k)
@@ -41,6 +41,9 @@ def update_index():
     ids.sort(reverse=True)
     html = markdown2.markdown('\n\n'.join(ids))
     with open('index.html', 'w') as f:
+        f.writelines(['<title>风沐白的部落格 | entr0pia\'s blog</title>\n',
+                      '<meta charset="UTF-8">\n',
+                      '<link rel="icon" type="image/x-icon" href="/imgs/favicon.ico">\n'])
         f.write(html)
 
 
