@@ -31,7 +31,7 @@ def get_raws():
 
 
 def update_index():
-    ids = []
+    ids = ['<title>风沐白的部落格 | entr0pia\'s blog</title>']
     for k, v in dict_fname_title.items():
         i = '{}【{}】'.format(k[:10], v)
         uri = 'arts/{}.html'.format(k)
