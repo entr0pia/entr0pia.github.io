@@ -30,4 +30,4 @@ NekoSMS 是一个用于屏蔽短信的 Xposed 插件, 支持正则表达式, 通
 ![判断逻辑](/imgs/2021-10-15/Snipaste_2021-10-15_10-52-31.jpg)<br>
 如果你没见过 **7** 位数字的验证码, 可以将黑名单规则中的 **8** 改为 **7**<br>
 如果你不希望短信中出现任何号码, 可以不使用白名单规则<br>
-如果你希望对出现在短信中的号码有更严格的限制, 请参考[github.com/VincentSit/ChinaMobilePhoneNumberRegex](https://github.com/VincentSit/ChinaMobilePhoneNumberRegex), 本文的规则就出自那里
+如果你希望对出现在短信中的号码有更严格的限制, 请参考 [github.com/VincentSit/ChinaMobilePhoneNumberRegex](https://github.com/VincentSit/ChinaMobilePhoneNumberRegex), 本文的规则就出自那里
