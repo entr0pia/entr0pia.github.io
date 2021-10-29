@@ -8,6 +8,7 @@ dict_fname_title = dict()
 forms = ['<meta charset="UTF-8">\n',
          '<link rel="icon" type="image/x-icon" href="/imgs/favicon.ico">\n',
          '<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/markdown-css-smartisan/github-markdown.css"/>\n',
+         '<link rel="stylesheet" type="text/css" href="/codehilite.css"/>\n',
          '<style>\n',
          '.toc {\n',
          '  width: 20%;\n',
