@@ -1,5 +1,20 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/x-icon" href="/imgs/favicon.ico">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/markdown-css-smartisan/github-markdown.css"/>
+<style>
+.toc {
+  width: 20%;
+  float: left;
+  position: fixed;
+  top: 2%;
+}
+.markdown-body {
+  width: 60%;
+  margin-right: 10%;
+  float: right;
+}
+</style>
+<div class="toc">
 <ul>
   <li><a href="#1">1. 前提要求</a></li>
   <li><a href="#2-windows-10-2004-wsl2">2. Windows 10 (2004) 中的wsl2新特性</a></li>
@@ -16,6 +31,8 @@
   <li><a href="#5">5. 效果展示</a></li>
   <li><a href="#6-references">6. References</a></li>
 </ul>
+</div>
+<div class="markdown-body">
 <p><title>Windows 10 (2004) 启用wsl2, 并与VirtualBox 6.0+共存</title></p>
 
 <h1 id="1">1. 前提要求</h1>
@@ -109,3 +126,4 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 <li><a href="https://github.com/microsoft/WSL/issues/4194">参考的对象类型不支持尝试的操作。 · Issue #4194 · microsoft/WSL</a></li>
 <li><a href="https://answers.microsoft.com/zh-hans/windows/forum/all/windows-10-%E6%89%93%E5%BC%80windows/286f8a35-6a74-433c-b00f-bcd03812d180">Windows 10 打开Windows Sandbox提示找不到虚拟机监控程序，请启用虚拟机监控程序支持 - Microsoft Community</a></li>
 </ol>
+</div>
