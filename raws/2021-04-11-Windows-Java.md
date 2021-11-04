@@ -51,3 +51,11 @@ scoop update <jdk_package_name>
 传统的方法总是会引导人们去下载安装**Oracle JDK**, 实际上这是有一定的法律风险的.
 在生产环境下使用Oracle JDK是需要授权的.
 虽然Oracle公司不一定会找上门来, 但还是要做一个遵纪守法的好公民的.
+
+---
+
+2021年11月04日更新
+
+自JDK 17及以后, Oracle JDK可以免费商用了. 但还是不建议, 谁知道它会不会又改回去呢.
+
+> Oracle 最新发布的 NFTC 许可 中撤回了 2018 年制定的要对 Oracle JDK 收取商用费用的决定，并且也将继续提供 Oracle OpenJDK 发行版。最新 NFTC 适用于最近发布的 Oracle JDK 17 和后续版本。Oracle 对此解释称，“在 GPL 下提供的 Oracle OpenJDK 构建版本是非常受欢迎的，但来自开发者、学术界和企业的反馈是，他们也希望在一个明确的自由条款许可下获得值得信赖、坚如磐石的 Oracle JDK。”并明确表示，新版 NFTC “包括商业和生产用途”，而且“只要不收费，允许再分发”。但调查表明，甲骨文的 JDK 发行版已不再是最受欢迎的 Java 发行版。开发人员们更喜欢 AdoptOpenJDK、亚马逊、微软等其他供应商的 OpenJDK 发行版。
