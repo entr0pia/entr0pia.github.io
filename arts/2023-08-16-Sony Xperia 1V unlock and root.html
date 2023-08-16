@@ -1,0 +1,109 @@
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="/imgs/favicon.ico">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/markdown-css-smartisan/github-markdown.css"/>
+<link rel="stylesheet" type="text/css" href="/codehilite.css"/>
+<style>
+.toc {
+  width: 20%;
+  float: left;
+  position: fixed;
+  top: 2%;
+}
+.markdown-body {
+  width: 60%;
+  margin-right: 10%;
+  float: right;
+}
+</style>
+<div class="toc">
+<ul>
+  <li><a href="#1">1. 软件准备</a>
+  <ul>
+    <li><a href="#11-adb-tools">1.1 adb tools</a></li>
+    <li><a href="#12-newflasher">1.2 Newflasher</a></li>
+    <li><a href="#13-unsin">1.3 unsin</a></li>
+    <li><a href="#14-xperifirm">1.4 XperiFirm</a></li>
+  </ul></li>
+  <li><a href="#2">2. 安装驱动程序</a>
+  <ul>
+    <li><a href="#21-adb">2.1 adb 驱动</a></li>
+    <li><a href="#22-gordongate-flash">2.2 GordonGate flash 驱动</a></li>
+  </ul></li>
+  <li><a href="#3-root">3. 刷机 &amp; root</a></li>
+  <li><a href="#ps">PS</a></li>
+</ul>
+</div>
+<div class="markdown-body">
+<p><title>Sony Xperia 1V 刷机经验/教程/记录</title></p>
+
+<p>初始发布日期: 2023-08-16</p>
+
+<h1 id="1">1. 软件准备</h1>
+
+<blockquote>
+  <p>建议每次刷机前检查所有软件的更新. 除非你的设备已经EOL, 那样选择距离系统版本的发布日期最近的版本 <br />
+  有人曾说<em>能用不就行了</em>. 那么如何判断能不能用呢? <strong>刷成砖的时候就不能用了</strong></p>
+</blockquote>
+
+<h2 id="11-adb-tools">1.1 adb tools</h2>
+
+<p>推荐使用包管理器, 例如:</p>
+
+<pre><code>scoop install adb
+</code></pre>
+
+<h2 id="12-newflasher">1.2 Newflasher</h2>
+
+<p>下载地址: <a href="https://forum.xda-developers.com/t/tool-newflasher-xperia-command-line-flasher.3619426/#:~:text=com/munjeni/newflasher-,Attachments,-newflasher_v57.zip">Newflasher | XDA</a></p>
+
+<h2 id="13-unsin">1.3 unsin</h2>
+
+<p>下载地址: <a href="https://forum.xda-developers.com/t/tool-unsin-sin-v3-v4-v5-unpacker-v1-13.3128106/">unsin | XDA</a></p>
+
+<h2 id="14-xperifirm">1.4 XperiFirm</h2>
+
+<p>下载地址: <a href="https://forum.xda-developers.com/t/tool-xperifirm-xperia-firmware-downloader-v5-6-5.2834142/">XperiFirm | XDA</a></p>
+
+<h1 id="2">2. 安装驱动程序</h1>
+
+<blockquote>
+  <p>仅使用 <code>adb</code> 命令是不需要驱动的. Linux 应该也不需要</p>
+</blockquote>
+
+<h2 id="21-adb">2.1 adb 驱动</h2>
+
+<p>下载地址: <a href="https://developer.sony.com/file/download/xperia-1-v-driver/">Xperia 1 V driver</a></p>
+
+<p>只需要安装一次, 以后使用 <code>fastboot</code> 命令时(即<strong>蓝灯</strong>模式), 在<code>设备管理器/其他设备/Android</code> 的右键菜单更新驱动, 在本机驱动列表中找到 <code>Sony sa0200</code></p>
+
+<h2 id="22-gordongate-flash">2.2 GordonGate flash 驱动</h2>
+
+<p>双击运行 <code>Newflasher</code>, 询问你是否需要 <code>GordonGate flash driver</code> 时选<em>是</em>. 安装同目录下出现的 <code>Sony_Mobile_Software_Update_Drivers_x64_Setup.msi</code></p>
+
+<p>同理, 只需要安装一次, 以后再进入<strong>绿灯</strong>模式时, 在本机驱动列表中找到 <code>SOMC flash device</code></p>
+
+<h1 id="3-root">3. 刷机 &amp; root</h1>
+
+<blockquote>
+  <p><strong>千万不要凭借以往的经验刷机</strong></p>
+</blockquote>
+
+<ol>
+<li>重置手机. <strong>不要在引导界面设置锁屏密码</strong></li>
+<li>解锁. 参考官方教程 <a href="https://developer.sony.com/open-source/aosp-on-xperia-open-devices/get-started/unlock-bootloader/how-to-unlock-bootloader/">How to unlock bootloader</a>. <strong>不要在引导界面设置锁屏密码</strong></li>
+<li>制作 <code>Magsik</code> 镜像. 在 XperiFirm 下载的 ROM 中, 找到 <code>init_boot_X-****.sin</code> 的文件, 用 unsin 提取 img 文件, 然后用 Magisk 修补 img 镜像. <strong>注意: 骁龙 8g2 机型要刷入的是 <code>init_boot</code> 分区</strong></li>
+<li>刷入修补得到的 img 镜像 <br />
+i. <code>adb reboot fastboot</code> 或在<strong>蓝灯</strong>模式下执行 <code>fastboot reboot fastboot</code> <br />
+ii. <code>fastboot flash init_boot &lt;path_to_patched_init_boot.img&gt;</code> <br />
+iii. <code>fastboot reboot</code>. <strong>不要在引导界面设置锁屏密码</strong></li>
+<li><strong>进入桌面后再设置锁屏密码和指纹</strong>. 如果不能设置, 请还原 <code>init_boot</code> 镜像并回锁 (<code>fastboot oem lock</code>), 然后从第1步重新开始</li>
+</ol>
+
+<h1 id="ps">PS</h1>
+
+<ol>
+<li>刷入错误的 Magisk 模块导致的 bootloop 救砖命令: <code>adb wait-for-device shell magisk --remove-modules</code></li>
+<li>使用 Newflasher 线刷系统时, 要认真阅读选项, 不要凭借经验瞎按 <code>y</code> 和 <code>n</code></li>
+<li>为了减少麻烦, 执行重置系统等会格式化 <code>data</code> 分区的操作前退出谷歌账号</li>
+</ol>
+</div>
