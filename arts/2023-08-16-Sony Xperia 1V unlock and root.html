@@ -96,7 +96,7 @@
 i. <code>adb reboot fastboot</code> 或在<strong>蓝灯</strong>模式下执行 <code>fastboot reboot fastboot</code> <br />
 ii. <code>fastboot flash init_boot &lt;path_to_patched_init_boot.img&gt;</code> <br />
 iii. <code>fastboot reboot</code>. <strong>不要在引导界面设置锁屏密码</strong></li>
-<li><strong>进入桌面后再设置锁屏密码和指纹</strong>. 如果不能设置, 请还原 <code>init_boot</code> 镜像并回锁 (<code>fastboot oem lock</code>), 然后从第1步重新开始</li>
+<li><strong>进入桌面后再设置锁屏密码和指纹</strong>. 如果不能设置, 请还原 <code>init_boot</code> 镜像并回锁 (<code>fastboot oem lock</code>), 然后从第1步重新开始 (注意, 这里是个循环过程, 直到锁屏密码没有问题为止)</li>
 </ol>
 
 <h1 id="ps">PS</h1>
@@ -105,5 +105,6 @@ iii. <code>fastboot reboot</code>. <strong>不要在引导界面设置锁屏密�
 <li>刷入错误的 Magisk 模块导致的 bootloop 救砖命令: <code>adb wait-for-device shell magisk --remove-modules</code></li>
 <li>使用 Newflasher 线刷系统时, 要认真阅读选项, 不要凭借经验瞎按 <code>y</code> 和 <code>n</code></li>
 <li>为了减少麻烦, 执行重置系统等会格式化 <code>data</code> 分区的操作前退出谷歌账号</li>
+<li>如果不需要解锁root, 而遇到了锁屏密码的问题, 可以参考<strong>第3节</strong>, 跳过解锁相关步骤即可</li>
 </ol>
 </div>
