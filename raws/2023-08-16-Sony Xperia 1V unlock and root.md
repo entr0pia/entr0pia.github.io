@@ -56,10 +56,11 @@ scoop install adb
    i. `adb reboot fastboot` 或在**蓝灯**模式下执行 `fastboot reboot fastboot`  
    ii. `fastboot flash init_boot <path_to_patched_init_boot.img>`  
    iii. `fastboot reboot`. **不要在引导界面设置锁屏密码**
-5. **进入桌面后再设置锁屏密码和指纹**. 如果不能设置, 请还原 `init_boot` 镜像并回锁 (`fastboot oem lock`), 然后从第1步重新开始
+5. **进入桌面后再设置锁屏密码和指纹**. 如果不能设置, 请还原 `init_boot` 镜像并回锁 (`fastboot oem lock`), 然后从第1步重新开始 (注意, 这里是个循环过程, 直到锁屏密码没有问题为止)
 
 # PS
 
 1. 刷入错误的 Magisk 模块导致的 bootloop 救砖命令: `adb wait-for-device shell magisk --remove-modules`
 2. 使用 Newflasher 线刷系统时, 要认真阅读选项, 不要凭借经验瞎按 `y` 和 `n`
 3. 为了减少麻烦, 执行重置系统等会格式化 `data` 分区的操作前退出谷歌账号
+4. 如果不需要解锁root, 而遇到了锁屏密码的问题, 可以参考**第3节**, 跳过解锁相关步骤即可
