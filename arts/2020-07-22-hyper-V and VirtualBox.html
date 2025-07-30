@@ -17,26 +17,26 @@
 </style>
 <div class="toc">
 <ul>
-  <li><a href="#1">1. 前提要求</a></li>
-  <li><a href="#2-windows-10-2004-wsl2">2. Windows 10 (2004) 中的wsl2新特性</a></li>
-  <li><a href="#3">3. 步骤</a>
+  <li><a href="#1-前提要求">1. 前提要求</a></li>
+  <li><a href="#2-windows-10-2004-中的wsl2新特性">2. Windows 10 (2004) 中的wsl2新特性</a></li>
+  <li><a href="#3-步骤">3. 步骤</a>
   <ul>
-    <li><a href="#1-virtualboxhyper-v">1. VirtualBox启用hyper-v支持</a></li>
-    <li><a href="#2-wsl2">2. 启用wsl2</a></li>
+    <li><a href="#1-virtualbox启用hyper-v支持">1. VirtualBox启用hyper-v支持</a></li>
+    <li><a href="#2-启用wsl2">2. 启用wsl2</a></li>
   </ul></li>
-  <li><a href="#4">4. 错误处理</a>
+  <li><a href="#4-错误处理">4. 错误处理</a>
   <ul>
-    <li><a href="#1-wsl">1. 启动wsl时报错</a></li>
-    <li><a href="#2-wsl">2. 切换wsl版本失败</a></li>
+    <li><a href="#1-启动wsl时报错">1. 启动wsl时报错</a></li>
+    <li><a href="#2-切换wsl版本失败">2. 切换wsl版本失败</a></li>
   </ul></li>
-  <li><a href="#5">5. 效果展示</a></li>
+  <li><a href="#5-效果展示">5. 效果展示</a></li>
   <li><a href="#6-references">6. References</a></li>
 </ul>
 </div>
 <div class="markdown-body">
 <p><title>Windows 10 (2004) 启用wsl2, 并与VirtualBox 6.0+共存</title></p>
 
-<h1 id="1">1. 前提要求</h1>
+<h1 id="1-前提要求">1. 前提要求</h1>
 
 <ol>
 <li>Windows 版本: 2004+</li>
@@ -48,7 +48,7 @@
 
 <p><em>注 2</em> : 本文中提到的命令一般都需要管理员权限</p>
 
-<h1 id="2-windows-10-2004-wsl2">2. Windows 10 (2004) 中的wsl2新特性</h1>
+<h1 id="2-windows-10-2004-中的wsl2新特性">2. Windows 10 (2004) 中的wsl2新特性</h1>
 
 <p>Windows Subsystem for Linux (WSL) 2改进</p>
 
@@ -56,15 +56,15 @@
 <li>使用localhost从Windows访问wsl
 &gt;在使用 WSL 2 发布的第一个版本中，需要通过远程 IP 地址访问网络应用程序，但现在这个问题已经解决，现在可以使用 localhost 从 Windows 访问 Linux 网络应用程序。</li>
 <li>WSL 全局配置
-&gt;所有 WSL 2 发行版都运行在同一个虚拟机(VM)上，因此，在此 VM 的任何配置选项都将全局应用于所有 WSL 2 发行版。在这个新的更新中，增加了为 WSL 使用全局配置选项的能力，这些选项是针对那些希望进一步定制他们的 WSL 体验的超级用户。 <br />
+&gt;所有 WSL 2 发行版都运行在同一个虚拟机(VM)上，因此，在此 VM 的任何配置选项都将全局应用于所有 WSL 2 发行版。在这个新的更新中，增加了为 WSL 使用全局配置选项的能力，这些选项是针对那些希望进一步定制他们的 WSL 体验的超级用户。<br />
 在用户文件夹中创建一个名为 .wslconfig 的新文件(C:\Users&lt;yourUsername>\where <yourUsername> 是你的 Windows 登录名)。wslconfig 文件是以 INI 文件为模型的，就像 .gitconfig 一样。</li>
 <li>在 WSL 2 中使用自定义内核
 &gt;提供了一个 WSL 2 的 Linux 内核，它是在 Windows 中提供的。如果你希望有一个特定的内核为你的 WSL 2 发行版提供电源，例如使用特定的内核模块，现在可以在 .wslconfig 文件中使用内核选项来指定到机器上内核的路径，并且该内核在启动时将被加载到 WSL 2 VM 中。如果没有指定选项，将回到使用 Windows 提供的 Linux 内核作为 WSL 2 的一部分。</li>
 </ol>
 
-<h1 id="3">3. 步骤</h1>
+<h1 id="3-步骤">3. 步骤</h1>
 
-<h2 id="1-virtualboxhyper-v">1. VirtualBox启用hyper-v支持</h2>
+<h2 id="1-virtualbox启用hyper-v支持">1. VirtualBox启用hyper-v支持</h2>
 
 <p>进入VirtualBox安装目录, 确定当前目录下存在VBoxManage.exe文件, 在当前目录打开powershell. 或者你将VBoxManage.exe所在目录加入环境变量, 任意路径下打开powershell.
 执行以下命令:</p>
@@ -76,7 +76,7 @@
 ./VBoxManage.exe setextradata global "VBoxInternal/NEM/UseRing0Runloop" 0
 </code></pre>
 
-<h2 id="2-wsl2">2. 启用wsl2</h2>
+<h2 id="2-启用wsl2">2. 启用wsl2</h2>
 
 <p>在cmd或powershell窗口中执行以下命令:</p>
 
@@ -89,25 +89,25 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 <pre><code>wsl --set-version &lt;Distro&gt; 2
 </code></pre>
 
-<h1 id="4">4. 错误处理</h1>
+<h1 id="4-错误处理">4. 错误处理</h1>
 
-<h2 id="1-wsl">1. 启动wsl时报错</h2>
+<h2 id="1-启动wsl时报错">1. 启动wsl时报错</h2>
 
-<p>Error: ==参考的对象类型不支持尝试的操作== <br />
+<p>Error: ==参考的对象类型不支持尝试的操作==<br />
 执行命令:</p>
 
 <pre><code>netsh winsock reset
 </code></pre>
 
-<h2 id="2-wsl">2. 切换wsl版本失败</h2>
+<h2 id="2-切换wsl版本失败">2. 切换wsl版本失败</h2>
 
-<p>Error: ==请启用虚拟机平台== <br />
+<p>Error: ==请启用虚拟机平台==<br />
 执行命令:</p>
 
 <pre><code>bcdedit /set hypervisorlaunchtype auto
 </code></pre>
 
-<h1 id="5">5. 效果展示</h1>
+<h1 id="5-效果展示">5. 效果展示</h1>
 
 <ol>
 <li>切换wsl2, 并在wsl2中启用网络服务

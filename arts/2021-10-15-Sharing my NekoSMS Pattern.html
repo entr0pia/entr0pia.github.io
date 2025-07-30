@@ -17,11 +17,11 @@
 </style>
 <div class="toc">
 <ul>
-  <li><a href="#1-nekosms">1. NekoSMS 介绍</a></li>
-  <li><a href="#2">2. 我的正则表达式</a>
+  <li><a href="#1-nekosms-介绍">1. NekoSMS 介绍</a></li>
+  <li><a href="#2-我的正则表达式">2. 我的正则表达式</a>
   <ul>
-    <li><a href="#21">2.1 订阅类短信</a></li>
-    <li><a href="#22">2.2 引导加垃圾微信号的短信</a></li>
+    <li><a href="#21-订阅类短信">2.1 订阅类短信</a></li>
+    <li><a href="#22-引导加垃圾微信号的短信">2.2 引导加垃圾微信号的短信</a></li>
   </ul></li>
 </ul>
 </div>
@@ -30,21 +30,21 @@
 
 <p>初始发布日期: 2021-10-15</p>
 
-<h1 id="1-nekosms">1. NekoSMS 介绍</h1>
+<h1 id="1-nekosms-介绍">1. NekoSMS 介绍</h1>
 
 <p>NekoSMS 是一个用于屏蔽短信的 Xposed 插件, 支持正则表达式, 通配符等多种屏蔽方式. 适配 Android 4.4-11. 项目主页 <a href="https://github.com/apsun/NekoSMS">github.com/apsun/NekoSMS</a>.</p>
 
 <p><em>额外的, <a href="https://github.com/moezbhatti/qksms">QKSMS</a> (一个开源短信息 App) 将在未来加入正则屏蔽功能.</em></p>
 
-<h1 id="2">2. 我的正则表达式</h1>
+<h1 id="2-我的正则表达式">2. 我的正则表达式</h1>
 
-<h2 id="21">2.1 订阅类短信</h2>
+<h2 id="21-订阅类短信">2.1 订阅类短信</h2>
 
 <p><strong>黑名单规则:</strong> <code>[退回复拒].{0,2}[退回订拒关定TDQX]|TD</code></p>
 
 <p><strong>说明:</strong> 覆盖我遇到过的各种订阅类短信. 至于为什么 <code>TD</code> 要单独摘出来, 似乎是会导致误杀, 具体是什么我忘了.</p>
 
-<h2 id="22">2.2 引导加垃圾微信号的短信</h2>
+<h2 id="22-引导加垃圾微信号的短信">2.2 引导加垃圾微信号的短信</h2>
 
 <p><strong>目标示例:</strong> </p>
 
